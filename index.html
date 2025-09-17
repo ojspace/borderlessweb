@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borderless eSIM - Global Connectivity in One Tap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0B1D26;
+            color: #FFFFFF;
+            min-height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1440px;
+            padding: 2rem;
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            height: 100vh;
+            align-items: center;
+        }
+
+        .header {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            right: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            text-decoration: none;
+            transition: text-shadow 0.3s ease;
+        }
+
+        .logo:hover {
+            text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+        }
+
+        .nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav a {
+            color: #CCCCCC;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav a:hover {
+            color: #FFFFFF;
+        }
+
+        .language-switcher {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .main-content {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 16px;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .diagonal-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                rgba(255, 255, 255, 0.03) 25%, 
+                transparent 25%, 
+                transparent 50%, 
+                rgba(255, 255, 255, 0.03) 50%, 
+                rgba(255, 255, 255, 0.03) 75%, 
+                transparent 75%, 
+                transparent);
+            background-size: 100px 100px;
+            z-index: -1;
+        }
+
+        .country-badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(0, 255, 204, 0.1);
+            color: #00FFCC;
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #FFFFFF, #00FFCC);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tagline {
+            font-size: 1.25rem;
+            color: #CCCCCC;
+            margin-bottom: 2rem;
+        }
+
+        .cta {
+            display: inline-block;
+            background: #00FFCC;
+            color: #0B1D26;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 255, 204, 0.2);
+        }
+
+        .cta-sublabel {
+            font-size: 0.9rem;
+            color: #CCCCCC;
+            margin-bottom: 2rem;
+        }
+
+        .trust-badges {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .trust-badge img {
+            width: 32px;
+            height: 32px;
+        }
+
+        .trust-badge-text {
+            font-size: 0.9rem;
+            color: #CCCCCC;
+        }
+
+        .trust-stats {
+            font-size: 0.9rem;
+            color: #CCCCCC;
+            margin-bottom: 2rem;
+        }
+
+        .globe-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        canvas {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 2rem;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: #CCCCCC;
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: #CCCCCC;
+            text-decoration: none;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: #FFFFFF;
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .globe-container {
+                display: none;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="/" class="logo">Borderless</a>
+            <nav class="nav">
+                <a href="/terms/">Terms</a>
+                <a href="/privacy/">Privacy</a>
+                <a href="/support/">Support</a>
+                <div class="language-switcher">
+                    🌍 EN
+                </div>
+            </nav>
+        </header>
+
+        <div class="main-content">
+            <div class="diagonal-lines"></div>
+            <div class="country-badge">
+                🌍 190+ Countries Connected Instantly
+            </div>
+            <h1>Global eSIM connectivity in one tap</h1>
+            <p class="tagline">Connect instantly in 190+ countries</p>
+            <a href="#" class="cta">Download on App Store</a>
+            <p class="cta-sublabel">Free to download • No signup needed</p>
+            
+            <div class="trust-badges">
+                <div class="trust-badge">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2300FFCC'><path d='M12 2L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 2zm6.82 7L12 12.72 5.18 9 12 5.28 18.82 9zM12 18.72L6 15.77v-4.1l6 3.27 6-3.27v4.1l-6 2.95z'/></svg>" alt="5G Ready">
+                    <div class="trust-badge-text">5G Ready</div>
+                </div>
+                <div class="trust-badge">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2300FFCC'><path d='M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z'/></svg>" alt="4.9/5 Rating">
+                    <div class="trust-badge-text">4.9/5 Rating</div>
+                </div>
+                <div class="trust-badge">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2300FFCC'><path d='M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z'/></svg>" alt="Secure">
+                    <div class="trust-badge-text">Secure</div>
+                </div>
+            </div>
+            
+            <p class="trust-stats">Used in 30,000+ trips across 6 continents</p>
+        </div>
+
+        <div class="globe-container">
+            <canvas id="globe"></canvas>
+        </div>
+
+        <footer class="footer">
+            2025 Borderless
+            <a href="/terms/">Terms</a>
+            •
+            <a href="/privacy/">Privacy</a>
+            •
+            <a href="/support/">Support</a>
+        </footer>
+    </div>
+
+    <script async src="https://unpkg.com/three@0.132.2/build/three.min.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ 
+                canvas: document.getElementById('globe'),
+                alpha: true,
+                antialias: true
+            });
+
+            renderer.setSize(600, 600);
+            camera.position.z = 2;
+
+            const globeRadius = 1;
+            const segments = 64;
+
+            // Create the globe mesh
+            const geometry = new THREE.SphereGeometry(globeRadius, segments, segments);
+            const material = new THREE.MeshPhongMaterial({
+                color: 0x00FFCC,
+                transparent: true,
+                opacity: 0.1,
+                wireframe: true
+            });
+            const globe = new THREE.Mesh(geometry, material);
+            scene.add(globe);
+
+            // Add ambient light
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
+            scene.add(ambientLight);
+
+            // Add point light
+            const pointLight = new THREE.PointLight(0x00FFCC, 1);
+            pointLight.position.set(2, 2, 2);
+            scene.add(pointLight);
+
+            // Create glowing dots for major cities
+            const cities = [
+                { lat: 40.7128, lon: -74.0060, name: "New York" },
+                { lat: 51.5074, lon: -0.1278, name: "London" },
+                { lat: 35.6762, lon: 139.6503, name: "Tokyo" },
+                { lat: 48.8566, lon: 2.3522, name: "Paris" },
+                { lat: -33.8688, lon: 151.2093, name: "Sydney" }
+            ];
+
+            const dotGeometry = new THREE.SphereGeometry(0.02, 16, 16);
+            const dotMaterial = new THREE.MeshPhongMaterial({
+                color: 0x00FFCC,
+                emissive: 0x00FFCC,
+                emissiveIntensity: 0.5
+            });
+
+            cities.forEach(city => {
+                const dot = new THREE.Mesh(dotGeometry, dotMaterial);
+                const phi = (90 - city.lat) * (Math.PI / 180);
+                const theta = (city.lon + 180) * (Math.PI / 180);
+                
+                dot.position.x = -(globeRadius * Math.sin(phi) * Math.cos(theta));
+                dot.position.z = (globeRadius * Math.sin(phi) * Math.sin(theta));
+                dot.position.y = (globeRadius * Math.cos(phi));
+                
+                globe.add(dot);
+            });
+
+            // Animation loop
+            function animate() {
+                requestAnimationFrame(animate);
+                globe.rotation.y += 0.002;
+                renderer.render(scene, camera);
+            }
+
+            animate();
+
+            // Responsive globe
+            function onWindowResize() {
+                const container = document.querySelector('.globe-container');
+                const size = Math.min(container.offsetWidth, container.offsetHeight);
+                renderer.setSize(size, size);
+            }
+
+            window.addEventListener('resize', onWindowResize);
+            onWindowResize();
+        });
+    </script>
+</body>
+</html>
