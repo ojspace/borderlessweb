@@ -1,0 +1,29 @@
+---
+layout: base.njk
+title: Blog
+permalink: /blog/index.html
+---
+
+<div class="blog-index">
+    <div class="container">
+        <div class="blog-header">
+            <h1>Borderless Blog</h1>
+            <p class="blog-description">Insights on global connectivity, eSIM technology, and digital nomad lifestyle</p>
+        </div>
+
+        <div class="posts-grid">
+            {%- for post in collections.posts -%}
+            <article class="post-card">
+                <div class="post-card-content">
+                    <h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
+                    <time datetime="{{ post.date }}">{{ post.date | readableDate }}</time>
+                    {% if post.data.excerpt %}
+                    <p class="excerpt">{{ post.data.excerpt }}</p>
+                    {% endif %}
+                    <a href="{{ post.url }}" class="read-more">Read more →</a>
+                </div>
+            </article>
+            {%- endfor -%}
+        </div>
+    </div>
+</div>
