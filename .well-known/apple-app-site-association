@@ -1,0 +1,34 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": [
+          "66ZD8Z6QR8.com.aitechlab.borderless"
+        ],
+        "components": [
+          {
+            "/": "/packages/*",
+            "comment": "Open package details"
+          },
+          {
+            "/": "/esim/*",
+            "comment": "Open eSIM details"
+          },
+          {
+            "/": "/support/*",
+            "comment": "Open support ticket"
+          },
+          {
+            "/": "/referral/*",
+            "comment": "Apply referral code"
+          }
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": [
+      "66ZD8Z6QR8.com.aitechlab.borderless"
+    ]
+  }
+}
