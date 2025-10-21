@@ -3,7 +3,7 @@
     "details": [
       {
         "appIDs": [
-          "66ZD8Z6QR8.com.aitechlab.borderless"
+          "66ZD8Z6QR8.com.aitechlab.esim"
         ],
         "components": [
           {
@@ -28,7 +28,7 @@
   },
   "webcredentials": {
     "apps": [
-      "66ZD8Z6QR8.com.aitechlab.borderless"
+      "66ZD8Z6QR8.com.aitechlab.esim"
     ]
   }
 }
