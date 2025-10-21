@@ -4,8 +4,10 @@
 
 **This repository is now at:**
 ```
-/Users/oj/Documents/HOSTMAN/e-sim/borderlessweb-site
+/Users/oj/Documents/borderlessweb
 ```
+
+**Easy to find in your Documents folder!**
 
 **Separated from the backend app** (which is in `/Users/oj/Documents/HOSTMAN/e-sim/Borderless`)
 
@@ -15,7 +17,7 @@
 
 ```bash
 # Navigate to website folder
-cd /Users/oj/Documents/HOSTMAN/e-sim/borderlessweb-site
+cd /Users/oj/Documents/borderlessweb
 
 # Install dependencies (only needed once)
 npm install
@@ -34,7 +36,7 @@ npm run clean
 
 ```bash
 # Navigate to website folder
-cd /Users/oj/Documents/HOSTMAN/e-sim/borderlessweb-site
+cd /Users/oj/Documents/borderlessweb
 
 # Build the site
 npm run build
@@ -66,7 +68,7 @@ git log --oneline -5
 1. Create a new file in `src/posts/`:
 
 ```bash
-cd /Users/oj/Documents/HOSTMAN/e-sim/borderlessweb-site
+cd /Users/oj/Documents/borderlessweb
 nano src/posts/2025-10-22-your-post-title.md
 ```
 
@@ -140,10 +142,10 @@ wrangler login
 ```bash
 # Make sure you're in the right directory
 pwd
-# Should show: /Users/oj/Documents/HOSTMAN/e-sim/borderlessweb-site
+# Should show: /Users/oj/Documents/borderlessweb
 
 # If not, navigate there
-cd /Users/oj/Documents/HOSTMAN/e-sim/borderlessweb-site
+cd /Users/oj/Documents/borderlessweb
 ```
 
 ## 📚 Full Documentation
