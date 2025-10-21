@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Borderless eSIM for iOS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0B1D26 0%, #1a3a4a 100%);
+            color: #FFFFFF;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 500px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border-radius: 24px;
+            padding: 3rem 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, #00FFCC 0%, #00d4aa 100%);
+            border-radius: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #FFFFFF, #00FFCC);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #CCCCCC;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .cta {
+            display: inline-block;
+            background: #00FFCC;
+            color: #0B1D26;
+            padding: 1rem 2.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 255, 204, 0.3);
+        }
+
+        .note {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #999;
+        }
+    </style>
+    <script>
+        // Automatically redirect to App Store on page load
+        window.onload = function() {
+            // If on iOS, try to open the app first, then fallback to App Store
+            var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+            if (isIOS) {
+                // Redirect to App Store after a short delay
+                setTimeout(function() {
+                    window.location.href = 'https://apps.apple.com/ph/app/borderless-esim-by-ai-tech-lab/id6748566873';
+                }, 500);
+            }
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">📱</div>
+        <h1>Download Borderless eSIM</h1>
+        <p>Stay connected in 190+ countries with instant eSIM activation. No physical SIM card needed.</p>
+        <a href="https://apps.apple.com/ph/app/borderless-esim-by-ai-tech-lab/id6748566873" class="cta">Download on App Store</a>
+        <p class="note">Available for iOS 14.0 and later</p>
+    </div>
+</body>
+</html>

@@ -7,6 +7,10 @@
         ],
         "components": [
           {
+            "/": "/ios",
+            "comment": "Open app from iOS link"
+          },
+          {
             "/": "/packages/*",
             "comment": "Open package details"
           },
