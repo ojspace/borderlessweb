@@ -6,6 +6,7 @@ A modern, static website for Borderless eSIM featuring a blog powered by Elevent
 
 - **Landing Page**: Interactive 3D globe with key features and App Store download
 - **Blog**: Powered by Eleventy with Markdown-based content
+- **Bilingual Support**: Full English and Spanish versions
 - **Static Pages**: Privacy, Terms, and Support pages
 - **Responsive Design**: Mobile-friendly with modern glassmorphism effects
 - **Fast & Lightweight**: Pure static HTML/CSS/JS with minimal dependencies
@@ -24,20 +25,31 @@ A modern, static website for Borderless eSIM featuring a blog powered by Elevent
 borderlessweb/
 ├── src/                      # Eleventy source files
 │   ├── _includes/            # Layout templates (Nunjucks)
-│   │   ├── base.njk         # Base layout
-│   │   └── post.njk         # Blog post layout
-│   ├── posts/               # Blog posts (Markdown)
+│   │   ├── base.njk         # English base layout
+│   │   ├── base-es.njk      # Spanish base layout
+│   │   ├── post.njk         # English post layout
+│   │   └── post-es.njk      # Spanish post layout
+│   ├── posts/               # English blog posts
 │   │   ├── 2025-10-20-5-benefits-borderless-launch.md
 │   │   └── 2025-10-21-what-is-borderless-launch.md
+│   ├── posts-es/            # Spanish blog posts
+│   │   ├── 2025-10-20-5-beneficios-lanzamiento-sin-fronteras.md
+│   │   └── 2025-10-21-que-es-lanzamiento-sin-fronteras.md
 │   ├── assets/              # Static assets
 │   │   └── css/
 │   │       └── blog.css     # Blog styling
-│   └── blog.njk             # Blog index page
+│   ├── blog.njk             # English blog index
+│   └── blog-es.njk          # Spanish blog index
 ├── static/                  # Static files (copied as-is)
-│   ├── index.html           # Landing page
-│   ├── privacy/             # Privacy policy
-│   ├── terms/               # Terms of service
-│   ├── support/             # Support page
+│   ├── index.html           # English landing page
+│   ├── privacy/             # English privacy policy
+│   ├── terms/               # English terms of service
+│   ├── support/             # English support page
+│   ├── es/                  # Spanish site
+│   │   ├── index.html       # Spanish landing page
+│   │   ├── privacy/         # Spanish privacy policy
+│   │   ├── terms/           # Spanish terms of service
+│   │   └── support/         # Spanish support page
 │   └── .well-known/         # Apple App Site Association
 ├── _site/                   # Build output (generated)
 ├── .eleventy.js             # Eleventy configuration
@@ -105,9 +117,65 @@ npm run clean
 
 Cloudflare Pages will automatically rebuild and deploy your site whenever you push to your repository.
 
+## Bilingual Support (English & Spanish)
+
+The website is fully bilingual with English and Spanish versions.
+
+### Language Structure
+
+- **English**: `/` (root)
+  - Homepage: `/`
+  - Blog: `/blog/`
+  - Posts: `/posts/post-name/`
+
+- **Spanish**: `/es/`
+  - Homepage: `/es/`
+  - Blog: `/es/blog/`
+  - Posts: `/es/posts/post-name/`
+
+### Language Switching
+
+All pages include language switchers:
+- English pages link to `/es/` (Spanish)
+- Spanish pages link to `/` (English)
+
+### Adding Translated Content
+
+**For Blog Posts:**
+
+1. **English post** in `src/posts/`:
+   ```markdown
+   ---
+   title: "Your Post Title"
+   date: 2025-10-22
+   layout: post.njk
+   author: Borderless Team
+   excerpt: "Short excerpt"
+   ---
+   Content...
+   ```
+
+2. **Spanish post** in `src/posts-es/`:
+   ```markdown
+   ---
+   title: "Título de Tu Post"
+   date: 2025-10-22
+   layout: post-es.njk
+   author: Equipo Borderless
+   excerpt: "Breve extracto"
+   permalink: /es/posts/post-name/
+   ---
+   Contenido...
+   ```
+
+**For Static Pages:**
+
+- English pages in `static/`
+- Spanish pages in `static/es/`
+
 ## Adding New Blog Posts
 
-1. Create a new Markdown file in `src/posts/`:
+1. Create a new Markdown file in `src/posts/` (English):
    ```markdown
    ---
    title: "Your Post Title"

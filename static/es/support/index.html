@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Soporte Borderless</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            display: flex;
+            min-height: 100vh;
+            align-items: center;
+            justify-content: center;
+            padding: 2.5rem 1.5rem;
+            background: #0B1D26;
+            color: #FFFFFF;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 520px;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        p {
+            color: #E5F7F3;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .options {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        a.contact-btn {
+            display: block;
+            padding: 1rem 1.25rem;
+            border-radius: 12px;
+            background: rgba(0, 255, 204, 0.16);
+            color: #00FFCC;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        a.contact-btn:hover,
+        a.contact-btn:focus {
+            background: rgba(0, 255, 204, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .footer-links {
+            margin-top: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a {
+            color: #8BE3D6;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover,
+        .footer-links a:focus {
+            text-decoration: underline;
+        }
+
+        .lang-switcher {
+            margin-bottom: 1rem;
+        }
+
+        .lang-switcher a {
+            color: #8BE3D6;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="lang-switcher">
+            <a href="/support/">🌍 English</a>
+        </div>
+        <h1>¿Necesitas ayuda?</h1>
+        <p>Elige la opción de soporte que mejor te funcione. Nuestro equipo está en línea todos los días para asegurarse de que tu eSIM permanezca conectado.</p>
+
+        <div class="options">
+            <a class="contact-btn" href="mailto:support@getborderless.space">Soporte por Email &mdash; support@getborderless.space</a>
+            <a class="contact-btn" href="https://t.me/borderless_support_bot" target="_blank" rel="noopener">Soporte en Telegram &mdash; chat en Telegram</a>
+        </div>
+
+        <p class="footer-links">
+            ¿Prefieres la app? Abre <a href="https://mobile.getborderless.space">Borderless</a> para gestionar tu eSIM.
+        </p>
+    </div>
+</body>
+</html>

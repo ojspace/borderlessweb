@@ -5,16 +5,32 @@ module.exports = function(eleventyConfig) {
   // Copy existing static pages and their assets to output
   eleventyConfig.addPassthroughCopy({"static": "/"});
 
-  // Add a collection for blog posts
+  // Add a collection for English blog posts
   eleventyConfig.addCollection("posts", function(collectionApi) {
     return collectionApi.getFilteredByGlob("src/posts/*.md").sort(function(a, b) {
       return b.date - a.date; // Sort by date descending (newest first)
     });
   });
 
-  // Date filter for readable dates
+  // Add a collection for Spanish blog posts
+  eleventyConfig.addCollection("posts_es", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/posts-es/*.md").sort(function(a, b) {
+      return b.date - a.date; // Sort by date descending (newest first)
+    });
+  });
+
+  // Date filter for readable dates (English)
   eleventyConfig.addFilter("readableDate", dateObj => {
     return new Date(dateObj).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  });
+
+  // Date filter for readable dates (Spanish)
+  eleventyConfig.addFilter("readableDateEs", dateObj => {
+    return new Date(dateObj).toLocaleDateString('es-ES', {
       year: 'numeric',
       month: 'long',
       day: 'numeric'
