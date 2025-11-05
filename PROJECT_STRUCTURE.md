@@ -9,11 +9,20 @@ After cleanup, your projects are now properly organized:
 └── borderlessweb/                    # 🌐 Your website (ONLY COPY!)
     ├── src/                          # Source files
     │   ├── _includes/                # Templates
-    │   ├── posts/                    # Blog posts
-    │   ├── assets/css/               # Styles
+    │   │   ├── base.njk              # Base layout
+    │   │   └── post.njk              # Blog post layout
+    │   ├── posts/                    # Blog posts (Markdown)
+    │   ├── assets/
+    │   │   ├── css/                  # Modular CSS structure
+    │   │   │   ├── variables.css     # Design tokens (colors, spacing, etc.)
+    │   │   │   ├── base.css          # CSS reset & base styles
+    │   │   │   ├── blog.css          # Blog-specific styles
+    │   │   │   └── homepage.css      # Homepage-specific styles
+    │   │   └── js/                   # JavaScript files
+    │   │       └── globe.js          # Three.js globe animation
     │   └── blog.njk                  # Blog index
     ├── static/                       # Static files
-    │   ├── index.html                # Homepage
+    │   ├── index.html                # Homepage (uses external CSS/JS)
     │   ├── privacy/
     │   ├── terms/
     │   └── support/
@@ -110,12 +119,33 @@ find ~/Documents -name ".eleventy.js" 2>/dev/null
 
 If you see multiple results, you have duplicates!
 
+## 🎨 CSS Architecture
+
+The website now uses a **modular CSS architecture** with design tokens:
+
+```
+src/assets/css/
+├── variables.css    # All design tokens (colors, spacing, typography)
+├── base.css         # CSS reset and base element styles
+├── blog.css         # Blog page styles
+└── homepage.css     # Homepage styles
+```
+
+**Benefits:**
+- ✅ Consistent design system using CSS variables
+- ✅ Easy to update colors/spacing site-wide
+- ✅ No inline styles (better performance & caching)
+- ✅ Modular and maintainable
+
+See **`CSS_ARCHITECTURE.md`** for detailed documentation.
+
 ## 📝 Related Documentation
 
 - **`QUICK_START.md`** - Daily commands
 - **`DEPLOYMENT_SAFETY.md`** - Never break the site
 - **`HOW_TO_ADD_BLOG_POST.md`** - Create blog posts
 - **`CLOUDFLARE_DEPLOYMENT.md`** - Deployment guide
+- **`CSS_ARCHITECTURE.md`** - CSS structure and design tokens
 
 ---
 
