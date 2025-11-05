@@ -1,0 +1,269 @@
+/* Static Pages Styles - Unified with Homepage Design */
+
+/* Page Layout */
+body.static-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.static-page .page-header {
+    background: var(--color-overlay-light);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    padding: var(--spacing-md) 0;
+    border-bottom: 1px solid var(--color-overlay-border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.static-page .header-content {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.static-page .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    text-decoration: none;
+    transition: text-shadow var(--transition-speed) var(--transition-ease);
+}
+
+.static-page .logo:hover {
+    text-shadow: 0 0 10px var(--color-accent-glow);
+}
+
+.static-page .nav-links {
+    display: flex;
+    gap: var(--spacing-lg);
+}
+
+.static-page .nav-links a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    font-size: var(--font-size-small);
+    transition: color var(--transition-speed) var(--transition-ease);
+}
+
+.static-page .nav-links a:hover {
+    color: var(--color-accent);
+}
+
+/* Main Content */
+.static-page main {
+    flex: 1;
+    padding: var(--spacing-2xl) var(--spacing-lg);
+}
+
+.static-page .content-container {
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+}
+
+/* Page Title */
+.static-page .page-title {
+    font-size: var(--font-size-h1);
+    margin-bottom: var(--spacing-xl);
+    text-align: center;
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Content Sections */
+.static-page .content-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.static-page h2 {
+    font-size: var(--font-size-h2);
+    color: var(--color-accent);
+    margin-bottom: var(--spacing-md);
+    margin-top: var(--spacing-xl);
+}
+
+.static-page h2:first-of-type {
+    margin-top: 0;
+}
+
+.static-page h3 {
+    font-size: var(--font-size-h3);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-sm);
+    margin-top: var(--spacing-lg);
+}
+
+.static-page p {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.8;
+}
+
+.static-page ul,
+.static-page ol {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-md);
+    padding-left: var(--spacing-lg);
+    line-height: 1.8;
+}
+
+.static-page li {
+    margin-bottom: var(--spacing-xs);
+}
+
+.static-page strong {
+    color: var(--color-text-primary);
+    font-weight: 600;
+}
+
+.static-page em {
+    color: var(--color-text-secondary);
+    font-style: italic;
+}
+
+.static-page a {
+    color: var(--color-accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0, 255, 204, 0.3);
+    transition: border-color var(--transition-speed) var(--transition-ease);
+}
+
+.static-page a:hover {
+    border-bottom-color: var(--color-accent);
+}
+
+/* Support Page Specific */
+.static-page.support-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-lg);
+}
+
+.static-page.support-page .support-card {
+    width: 100%;
+    max-width: 600px;
+    background: var(--color-overlay-light);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    border: 1px solid var(--color-overlay-border);
+    text-align: center;
+}
+
+.static-page.support-page h1 {
+    font-size: var(--font-size-h1);
+    margin-bottom: var(--spacing-md);
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.static-page.support-page .intro-text {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-xl);
+    line-height: 1.6;
+}
+
+.static-page.support-page .support-options {
+    display: grid;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.static-page.support-page .contact-btn {
+    display: block;
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: var(--radius-md);
+    background: var(--color-accent-bg);
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 600;
+    border: none;
+    transition: all var(--transition-speed) var(--transition-ease);
+}
+
+.static-page.support-page .contact-btn:hover {
+    background: rgba(0, 255, 204, 0.2);
+    transform: translateY(-2px);
+}
+
+.static-page.support-page .footer-note {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-small);
+    margin-top: var(--spacing-lg);
+}
+
+/* Footer */
+.static-page .page-footer {
+    background: var(--color-overlay-light);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    padding: var(--spacing-lg) 0;
+    border-top: 1px solid var(--color-overlay-border);
+}
+
+.static-page .footer-content {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+}
+
+.static-page .footer-content p {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-small);
+    margin: 0;
+}
+
+.static-page .footer-links {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.static-page .footer-links a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    font-size: var(--font-size-small);
+    border-bottom: none;
+    transition: color var(--transition-speed) var(--transition-ease);
+}
+
+.static-page .footer-links a:hover {
+    color: var(--color-text-primary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .static-page .page-title {
+        font-size: var(--font-size-h2);
+    }
+
+    .static-page .nav-links {
+        gap: var(--spacing-sm);
+        font-size: 0.85rem;
+    }
+
+    .static-page .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .static-page.support-page .support-card {
+        padding: var(--spacing-lg);
+    }
+}
