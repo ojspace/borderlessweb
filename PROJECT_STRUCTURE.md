@@ -28,6 +28,9 @@ After cleanup, your projects are now properly organized:
     │   └── support/
     ├── _site/                        # Build output
     ├── node_modules/                 # Dependencies
+    ├── .github/                      # GitHub configuration
+    │   └── workflows/                # GitHub Actions
+    │       └── deploy.yml            # Automatic deployment workflow
     ├── .git/                         # Git repository
     ├── package.json                  # NPM config
     ├── .eleventy.js                  # Build config
@@ -139,12 +142,32 @@ src/assets/css/
 
 See **`CSS_ARCHITECTURE.md`** for detailed documentation.
 
+## 🚀 Automatic Deployment with GitHub Actions
+
+The website now has **automatic deployment** configured:
+
+```
+.github/workflows/deploy.yml    # Automatic deployment workflow
+```
+
+**How it works:**
+- ✅ Push code to `main` or `claude/**` branches
+- ✅ GitHub Actions automatically builds and deploys
+- ✅ No manual deployment needed!
+
+**Setup required:**
+1. Add `CLOUDFLARE_API_TOKEN` to GitHub Secrets
+2. Add `CLOUDFLARE_ACCOUNT_ID` to GitHub Secrets
+
+See **`GITHUB_ACTIONS_SETUP.md`** for complete setup instructions.
+
 ## 📝 Related Documentation
 
 - **`QUICK_START.md`** - Daily commands
 - **`DEPLOYMENT_SAFETY.md`** - Never break the site
 - **`HOW_TO_ADD_BLOG_POST.md`** - Create blog posts
-- **`CLOUDFLARE_DEPLOYMENT.md`** - Deployment guide
+- **`CLOUDFLARE_DEPLOYMENT.md`** - Manual deployment guide
+- **`GITHUB_ACTIONS_SETUP.md`** - Automatic deployment setup ⭐ NEW
 - **`CSS_ARCHITECTURE.md`** - CSS structure and design tokens
 
 ---
