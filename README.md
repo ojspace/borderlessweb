@@ -9,14 +9,17 @@ A modern, static website for Borderless eSIM featuring a blog powered by Elevent
 - **Static Pages**: Privacy, Terms, and Support pages
 - **Responsive Design**: Mobile-friendly with modern glassmorphism effects
 - **Fast & Lightweight**: Pure static HTML/CSS/JS with minimal dependencies
+- **Modular CSS Architecture**: Design tokens and CSS variables for consistent styling
+- **Automatic Deployment**: GitHub Actions automatically deploys on push
 
 ## Tech Stack
 
 - **Static Site Generator**: Eleventy (11ty)
 - **Template Engine**: Nunjucks
-- **Styling**: Vanilla CSS with custom properties
+- **Styling**: Modular CSS with design tokens (CSS custom properties)
 - **3D Graphics**: Three.js for the globe visualization
-- **Hosting**: Cloudflare Pages (recommended)
+- **Deployment**: GitHub Actions → Cloudflare Pages (automatic)
+- **Hosting**: Cloudflare Pages
 
 ## Project Structure
 
@@ -30,8 +33,13 @@ borderlessweb/
 │   │   ├── 2025-10-20-5-benefits-borderless-launch.md
 │   │   └── 2025-10-21-what-is-borderless-launch.md
 │   ├── assets/              # Static assets
-│   │   └── css/
-│   │       └── blog.css     # Blog styling
+│   │   ├── css/             # Modular CSS
+│   │   │   ├── variables.css   # Design tokens
+│   │   │   ├── base.css        # CSS reset & base
+│   │   │   ├── blog.css        # Blog styles
+│   │   │   └── homepage.css    # Homepage styles
+│   │   └── js/
+│   │       └── globe.js     # Three.js globe animation
 │   └── blog.njk             # Blog index page
 ├── static/                  # Static files (copied as-is)
 │   ├── index.html           # Landing page
@@ -39,6 +47,9 @@ borderlessweb/
 │   ├── terms/               # Terms of service
 │   ├── support/             # Support page
 │   └── .well-known/         # Apple App Site Association
+├── .github/
+│   └── workflows/
+│       └── deploy.yml       # Automatic deployment
 ├── _site/                   # Build output (generated)
 ├── .eleventy.js             # Eleventy configuration
 ├── package.json             # Node dependencies
@@ -83,27 +94,32 @@ Remove the `_site/` directory:
 npm run clean
 ```
 
-## Deployment to Cloudflare Pages
+## Deployment
 
-### Configuration
+### Automatic Deployment (Recommended)
 
+This project uses **GitHub Actions** for automatic deployment to Cloudflare Pages.
+
+**How it works:**
+- Push to `main` or `claude/**` branches
+- GitHub Actions automatically builds and deploys
+- Live in ~1 minute
+
+**Setup:** See `GITHUB_ACTIONS_SETUP.md` for instructions.
+
+### Manual Deployment
+
+If you prefer manual deployment:
+
+```bash
+npm run build
+wrangler pages deploy _site
+```
+
+**Configuration:**
 - **Build Command**: `npm run build`
 - **Build Output Directory**: `_site`
 - **Node Version**: 18 or higher
-
-### Steps
-
-1. Push your code to GitHub
-2. Go to [Cloudflare Pages Dashboard](https://dash.cloudflare.com/?to=/:account/pages)
-3. Click "Create a project" → "Connect to Git"
-4. Select your repository
-5. Configure build settings:
-   - **Framework preset**: None (or Eleventy if available)
-   - **Build command**: `npm run build`
-   - **Build output directory**: `_site`
-6. Click "Save and Deploy"
-
-Cloudflare Pages will automatically rebuild and deploy your site whenever you push to your repository.
 
 ## Adding New Blog Posts
 
@@ -136,8 +152,16 @@ Cloudflare Pages will automatically rebuild and deploy your site whenever you pu
 
 ### Styling
 
-- Blog styles: `src/assets/css/blog.css`
-- Homepage styles: Inline in `static/index.html`
+The website uses a **modular CSS architecture** with design tokens:
+
+- **Design tokens**: `src/assets/css/variables.css` - Colors, spacing, typography
+- **Base styles**: `src/assets/css/base.css` - CSS reset and global styles
+- **Blog styles**: `src/assets/css/blog.css` - Blog-specific styles
+- **Homepage styles**: `src/assets/css/homepage.css` - Homepage-specific styles
+
+**To change colors/spacing site-wide**, edit the CSS variables in `variables.css`.
+
+See `CSS_ARCHITECTURE.md` for detailed documentation.
 
 ### Templates
 
@@ -152,6 +176,14 @@ Edit `.eleventy.js` to:
 - Configure passthrough copy
 - Add filters or shortcodes
 - Modify template formats
+
+## Documentation
+
+- **`CSS_ARCHITECTURE.md`** - CSS structure and design tokens
+- **`GITHUB_ACTIONS_SETUP.md`** - Automatic deployment setup
+- **`PROJECT_STRUCTURE.md`** - Complete project organization
+- **`HOW_TO_ADD_BLOG_POST.md`** - Blog post creation guide
+- **`CLOUDFLARE_DEPLOYMENT.md`** - Manual deployment guide
 
 ## Content
 
